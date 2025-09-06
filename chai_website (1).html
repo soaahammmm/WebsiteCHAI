@@ -1,0 +1,385 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>CHAI - Coastal Homeless Action Initiative</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<style>
+			/* Modern CSS for CHAI website */
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: 'Arial', sans-serif;
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				color: #fff;
+				line-height: 1.6;
+				min-height: 100vh;
+			}
+
+			#wrapper {
+				max-width: 1200px;
+				margin: 0 auto;
+				position: relative;
+			}
+
+			/* Header Styles */
+			#header {
+				text-align: center;
+				padding: 40px 20px;
+				background: rgba(255, 255, 255, 0.1);
+				backdrop-filter: blur(10px);
+				border-radius: 20px;
+				margin: 20px;
+				box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+			}
+
+			#header h1 {
+				font-size: 3em;
+				font-weight: bold;
+				margin-bottom: 10px;
+				text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+			}
+
+			#header .tagline {
+				font-size: 1.2em;
+				opacity: 0.9;
+				margin-bottom: 20px;
+			}
+
+			nav ul {
+				list-style: none;
+				display: flex;
+				justify-content: center;
+				gap: 20px;
+				flex-wrap: wrap;
+			}
+
+			nav a {
+				color: #fff;
+				text-decoration: none;
+				padding: 10px 20px;
+				border: 2px solid rgba(255, 255, 255, 0.3);
+				border-radius: 25px;
+				transition: all 0.3s ease;
+				font-weight: bold;
+			}
+
+			nav a:hover {
+				background: rgba(255, 255, 255, 0.2);
+				transform: translateY(-2px);
+			}
+
+			/* Main Content */
+			#main {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 30px;
+				padding: 40px 20px;
+			}
+
+			.section-card {
+				background: rgba(255, 255, 255, 0.1);
+				backdrop-filter: blur(10px);
+				border-radius: 20px;
+				padding: 30px;
+				box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+				border: 1px solid rgba(255, 255, 255, 0.2);
+				transition: transform 0.3s ease;
+			}
+
+			.section-card:hover {
+				transform: translateY(-5px);
+			}
+
+			.section-card h2 {
+				font-size: 2em;
+				margin-bottom: 20px;
+				color: #FFD700;
+				text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+			}
+
+			.section-card p {
+				margin-bottom: 15px;
+				line-height: 1.8;
+			}
+
+			/* Donation Button */
+			.donate-btn {
+				display: inline-block;
+				background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+				color: white !important;
+				padding: 15px 30px;
+				border-radius: 50px;
+				text-decoration: none;
+				font-weight: bold;
+				font-size: 1.1em;
+				transition: all 0.3s ease;
+				box-shadow: 0 4px 15px rgba(238, 90, 82, 0.4);
+				text-align: center;
+				margin-top: 20px;
+			}
+
+			.donate-btn:hover {
+				transform: translateY(-3px);
+				box-shadow: 0 6px 20px rgba(238, 90, 82, 0.6);
+			}
+
+			/* Team Member Card */
+			.team-member {
+				text-align: center;
+				background: linear-gradient(135deg, #ffecd2, #fcb69f);
+				color: #333;
+				border-radius: 20px;
+				padding: 30px;
+				margin: 20px;
+				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+			}
+
+			.team-member img {
+				width: 150px;
+				height: 150px;
+				border-radius: 50%;
+				object-fit: cover;
+				border: 5px solid #fff;
+				margin-bottom: 20px;
+				box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+			}
+
+			.team-member h3 {
+				font-size: 1.8em;
+				margin-bottom: 10px;
+				color: #2c3e50;
+			}
+
+			.achievements {
+				list-style: none;
+				margin-top: 15px;
+			}
+
+			.achievements li {
+				background: rgba(255, 255, 255, 0.7);
+				margin: 5px 0;
+				padding: 8px 15px;
+				border-radius: 20px;
+				font-weight: bold;
+				color: #2c3e50;
+			}
+
+			/* Footer */
+			#footer {
+				background: rgba(0, 0, 0, 0.8);
+				backdrop-filter: blur(10px);
+				padding: 40px 20px;
+				margin-top: 40px;
+				border-radius: 20px 20px 0 0;
+			}
+
+			.footer-content {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+				gap: 30px;
+				max-width: 1200px;
+				margin: 0 auto;
+			}
+
+			.contact-form {
+				background: rgba(255, 255, 255, 0.1);
+				padding: 30px;
+				border-radius: 15px;
+			}
+
+			.form-group {
+				margin-bottom: 20px;
+			}
+
+			.form-group input,
+			.form-group textarea {
+				width: 100%;
+				padding: 12px;
+				border: none;
+				border-radius: 10px;
+				background: rgba(255, 255, 255, 0.9);
+				color: #333;
+				font-size: 1em;
+			}
+
+			.form-group textarea {
+				resize: vertical;
+				min-height: 100px;
+			}
+
+			.btn {
+				background: linear-gradient(45deg, #667eea, #764ba2);
+				color: white;
+				padding: 12px 25px;
+				border: none;
+				border-radius: 25px;
+				cursor: pointer;
+				font-weight: bold;
+				transition: all 0.3s ease;
+				margin-right: 10px;
+			}
+
+			.btn:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+			}
+
+			/* Responsive Design */
+			@media (max-width: 768px) {
+				#header h1 {
+					font-size: 2em;
+				}
+
+				nav ul {
+					flex-direction: column;
+					align-items: center;
+				}
+
+				#main {
+					grid-template-columns: 1fr;
+				}
+
+				.team-member {
+					margin: 10px 0;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Wrapper -->
+		<div id="wrapper">
+
+			<!-- Header -->
+			<header id="header">
+				<h1><strong>CHAI</strong></h1>
+				<p class="tagline">Coastal Homeless Action Initiative</p>
+				<nav>
+					<ul>
+						<li><a href="#mission">Mission</a></li>
+						<li><a href="#impact">Impact</a></li>
+						<li><a href="#impact">Impact</a></li>
+						<li><a href="#contact">Contact</a></li>
+						<li><a href="https://hcb.hackclub.com/donations/start/chai-foundation" class="donate-btn" target="_blank">Donate Now</a></li>
+					</ul>
+				</nav>
+			</header>
+
+			<!-- Main -->
+			<div id="main">
+				
+				<!-- Mission Section -->
+				<section class="section-card" id="mission">
+					<h2>Our Mission</h2>
+					<p>The <strong>Coastal Homeless Action Initiative (CHAI)</strong> is dedicated to uplifting the homeless community in Corpus Christi through collaboration and service.</p>
+					<p>By partnering with local pharmacies and supporting youth volunteers, CHAI helps strengthen homeless shelters across the city, providing consistent resources and hands-on assistance.</p>
+					<p>Our mission is to build a network of care that empowers young people to make a difference while ensuring those without stable housing receive the dignity and support they deserve.</p>
+					<a href="https://hcb.hackclub.com/donations/start/chai-foundation" class="donate-btn" target="_blank">Support Our Cause</a>
+				</section>
+
+				<!-- Impact Section -->
+				<section class="section-card" id="impact">
+					<h2>Our Impact</h2>
+					<p><strong>Community Partnerships:</strong> We collaborate with local pharmacies to ensure consistent supply of essential resources to homeless shelters.</p>
+					<p><strong>Youth Engagement:</strong> We empower young volunteers to make meaningful contributions to their community while developing leadership skills.</p>
+					<p><strong>Shelter Support:</strong> Through hands-on assistance and resource provision, we help strengthen homeless shelters across Corpus Christi.</p>
+					<p><strong>Network Building:</strong> We create connections between community members, organizations, and those in need to build a stronger support system.</p>
+				</section>
+
+				<!-- Vision Section -->
+				<section class="section-card">
+					<h2>Our Vision</h2>
+					<p>Through compassion, action, and community partnerships, CHAI works toward creating a stronger, more connected Corpus Christi.</p>
+					<p>We believe that by bringing together young volunteers, local businesses, and community organizations, we can create lasting change in addressing homelessness in our city.</p>
+					<p>Every person deserves dignity, support, and the opportunity to rebuild their life with the help of a caring community.</p>
+				</section>
+
+			</div>
+
+			<!-- Team Section -->
+			<div id="team">
+				<div class="team-member">
+					<img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAH0AZADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytL
+
+			<!-- Footer -->
+			<footer id="footer">
+				<div class="footer-content">
+					<div>
+						<section>
+							<h2>About CHAI</h2>
+							<p>The Coastal Homeless Action Initiative is a youth-led organization dedicated to addressing homelessness in Corpus Christi through innovative partnerships and community service.</p>
+							<p>We believe in the power of young people to create meaningful change in their communities.</p>
+							<p class="copyright">
+								&copy; 2024 CHAI - Coastal Homeless Action Initiative. All rights reserved.
+							</p>
+						</section>
+					</div>
+					<div>
+						<section class="contact-form" id="contact">
+							<h2>Get in Touch</h2>
+							<form method="post" action="#">
+								<div class="form-group">
+									<input type="text" name="name" placeholder="Your Name" required />
+								</div>
+								<div class="form-group">
+									<input type="email" name="email" placeholder="Your Email" required />
+								</div>
+								<div class="form-group">
+									<textarea name="message" placeholder="Your Message" required></textarea>
+								</div>
+								<button type="submit" class="btn">Send Message</button>
+								<button type="reset" class="btn">Reset</button>
+							</form>
+						</section>
+					</div>
+				</div>
+			</footer>
+
+		</div>
+
+		<!-- Scripts for smooth scrolling -->
+		<script>
+			// Smooth scrolling for navigation links
+			document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+				anchor.addEventListener('click', function (e) {
+					e.preventDefault();
+					const target = document.querySelector(this.getAttribute('href'));
+					if (target) {
+						target.scrollIntoView({
+							behavior: 'smooth',
+							block: 'start'
+						});
+					}
+				});
+			});
+
+			// Add animation on scroll
+			const observerOptions = {
+				threshold: 0.1,
+				rootMargin: '0px 0px -50px 0px'
+			};
+
+			const observer = new IntersectionObserver(function(entries) {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						entry.target.style.opacity = '1';
+						entry.target.style.transform = 'translateY(0)';
+					}
+				});
+			}, observerOptions);
+
+			// Observe all section cards
+			document.querySelectorAll('.section-card, .team-member').forEach(el => {
+				el.style.opacity = '0';
+				el.style.transform = 'translateY(20px)';
+				el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+				observer.observe(el);
+			});
+		</script>
+
+	</body>
+</html>
